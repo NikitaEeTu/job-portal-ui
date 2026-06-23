@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CookiePolicyPopover = () => (
+const PrivacyPolicyPopover = () => (
   <div className="w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl p-3 text-xs text-gray-400 space-y-1.5">
-    <p className="text-white font-semibold text-xs">Cookie Policy</p>
-    <p>We use essential, preference, and analytics cookies to improve your experience.</p>
-    <p>Manage cookies anytime via your browser settings.</p>
-    <Link to="/cookie-policy" className="inline-block text-primary-400 hover:text-primary-300 underline">
+    <p className="text-white font-semibold text-xs">Privacy Policy</p>
+    <p>We collect only the data needed to connect you with employers and never sell your personal information.</p>
+    <p>You have full control over your data at any time.</p>
+    <Link to="/privacy-policy" className="inline-block text-primary-400 hover:text-primary-300 underline">
       Full policy →
     </Link>
   </div>
 );
 
 const Footer = () => {
-  const [showCookiePolicy, setShowCookiePolicy] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
@@ -155,17 +155,23 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-wrap justify-center md:justify-start gap-6 text-sm text-gray-400 mb-6 md:mb-0">
-              <Link
-                to="/privacy-policy"
-                className="group relative hover:text-white transition-colors duration-300"
+              <span
+                className="group relative hover:text-white transition-colors duration-300 cursor-pointer"
+                onMouseEnter={() => setShowPrivacyPolicy(true)}
+                onMouseLeave={() => setShowPrivacyPolicy(false)}
               >
                 <span className="relative z-10">Privacy Policy</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </Link>
-              <Link
-                to="/terms-of-service"
-                className="group relative hover:text-white transition-colors duration-300"
-              >
+                {showPrivacyPolicy && (
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50">
+                    <div className="relative">
+                      <PrivacyPolicyPopover />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gray-700"></div>
+                    </div>
+                  </div>
+                )}
+              </span>
+              <a className="group relative hover:text-white transition-colors duration-300">
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 bg-gray-900 border border-gray-600 text-gray-200 text-xs rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 shadow-xl">
