@@ -1,6 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+const CookiePolicyPopover = () => (
+  <div className="w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl p-3 text-xs text-gray-400 space-y-1.5">
+    <p className="text-white font-semibold text-xs">Cookie Policy</p>
+    <p>We use essential, preference, and analytics cookies to improve your experience.</p>
+    <p>Manage cookies anytime via your browser settings.</p>
+    <Link to="/cookie-policy" className="inline-block text-primary-400 hover:text-primary-300 underline">
+      Full policy →
+    </Link>
+  </div>
+);
+
 const Footer = () => {
+  const [showCookiePolicy, setShowCookiePolicy] = useState(false);
+
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
       {/* Background Elements */}
@@ -141,18 +155,36 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-wrap justify-center md:justify-start gap-6 text-sm text-gray-400 mb-6 md:mb-0">
-              <a className="group relative hover:text-white transition-colors duration-300">
+              <Link
+                to="/privacy-policy"
+                className="group relative hover:text-white transition-colors duration-300"
+              >
                 <span className="relative z-10">Privacy Policy</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </a>
-              <a className="group relative hover:text-white transition-colors duration-300">
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="group relative hover:text-white transition-colors duration-300"
+              >
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </a>
-              <a className="group relative hover:text-white transition-colors duration-300">
+              </Link>
+              <span
+                className="group relative hover:text-white transition-colors duration-300 cursor-pointer"
+                onMouseEnter={() => setShowCookiePolicy(true)}
+                onMouseLeave={() => setShowCookiePolicy(false)}
+              >
                 <span className="relative z-10">Cookie Policy</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </a>
+                {showCookiePolicy && (
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50">
+                    <div className="relative">
+                      <CookiePolicyPopover />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gray-700"></div>
+                    </div>
+                  </div>
+                )}
+              </span>
               <Link
                 to="/contact"
                 className="group relative hover:text-white transition-colors duration-300"
