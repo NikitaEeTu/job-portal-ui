@@ -16,7 +16,7 @@ const Footer = () => {
   const [showCookiePolicy, setShowCookiePolicy] = useState(false);
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/3 w-96 h-96 bg-gradient-to-br from-primary-600/10 to-purple-600/10 rounded-full blur-3xl"></div>
@@ -168,12 +168,13 @@ const Footer = () => {
               >
                 <span className="relative z-10">Terms of Service</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
-              </Link>
-              <span
-                className="group relative hover:text-white transition-colors duration-300 cursor-pointer"
-                onMouseEnter={() => setShowCookiePolicy(true)}
-                onMouseLeave={() => setShowCookiePolicy(false)}
-              >
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 bg-gray-900 border border-gray-600 text-gray-200 text-xs rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 shadow-xl">
+                  <p className="font-semibold text-white mb-2">Terms of Service</p>
+                  <p className="leading-relaxed text-gray-300">By using JobPortal, you agree to our Terms of Service. These terms govern your use of our platform, including job postings, applications, and account management. Misuse of the platform may result in account suspension.</p>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-8 border-transparent border-t-gray-900"></div>
+                </div>
+              </a>
+              <a className="group relative hover:text-white transition-colors duration-300">
                 <span className="relative z-10">Cookie Policy</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
                 {showCookiePolicy && (
