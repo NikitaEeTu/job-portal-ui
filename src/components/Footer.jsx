@@ -12,8 +12,17 @@ const PrivacyPolicyPopover = () => (
   </div>
 );
 
+const CookiePolicyPopover = () => (
+  <div className="w-52 bg-gray-900 border border-gray-700 rounded-lg shadow-xl p-3 text-xs text-gray-400 space-y-1.5">
+    <p className="text-white font-semibold text-xs">Cookie Policy</p>
+    <p>We use cookies to keep you logged in and improve your experience. No tracking cookies are shared with third parties.</p>
+    <p>You can manage cookie preferences in your browser settings.</p>
+  </div>
+);
+
 const Footer = () => {
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showCookiePolicy, setShowCookiePolicy] = useState(false);
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
@@ -180,7 +189,11 @@ const Footer = () => {
                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-8 border-transparent border-t-gray-900"></div>
                 </div>
               </a>
-              <a className="group relative hover:text-white transition-colors duration-300">
+              <a
+                className="group relative hover:text-white transition-colors duration-300 cursor-pointer"
+                onMouseEnter={() => setShowCookiePolicy(true)}
+                onMouseLeave={() => setShowCookiePolicy(false)}
+              >
                 <span className="relative z-10">Cookie Policy</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
                 {showCookiePolicy && (
