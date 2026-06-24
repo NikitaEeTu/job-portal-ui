@@ -191,13 +191,18 @@ const Footer = () => {
                     </div>
                   </div>
                 )}
-              </span>
+              </a>
               <Link
                 to="/contact"
                 className="group relative hover:text-white transition-colors duration-300"
               >
                 <span className="relative z-10">Contact Us</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -inset-2"></div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 bg-gray-900 border border-gray-600 text-gray-200 text-xs rounded-xl p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 shadow-xl">
+                  <p className="font-semibold text-white mb-2">Contact Us</p>
+                  <p className="leading-relaxed text-gray-300">Have a question or facing an issue? Send a message directly to our admin team and we&apos;ll get back to you as soon as possible.</p>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-8 border-transparent border-t-gray-900"></div>
+                </div>
               </Link>
             </div>
             <div className="text-center md:text-right">
